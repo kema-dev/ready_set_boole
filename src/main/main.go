@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	var i float64 = 10
+	switch {
+	case i == 10:
+		fmt.Printf("%f\n", i)
+	}
 }
