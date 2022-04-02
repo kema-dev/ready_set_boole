@@ -1,3 +1,3 @@
-module src/main
+module cmd/main.go
 
 go 1.18
