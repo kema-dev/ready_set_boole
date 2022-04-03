@@ -1,3 +1,3 @@
-module cmd/main.go
+module RSB
 
 go 1.18
