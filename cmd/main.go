@@ -13,13 +13,16 @@ func main() {
 	fmt.Printf("multiply(%d, %d) = %d\n", a, b, operation.Multiply(a, b))
 	fmt.Printf("graycode(%d) = %d\n", a, operation.GrayCode(a))
 	s := "10&"
-	fmt.Printf("boolevel(%s) = %t\n", s, operation.BoolEval(s))
+	fmt.Printf("booleval(%s) = %t\n", s, operation.BoolEval(s))
 	s = "10|"
-	fmt.Printf("boolevel(%s) = %t\n", s, operation.BoolEval(s))
+	fmt.Printf("booleval(%s) = %t\n", s, operation.BoolEval(s))
 	s = "11>"
-	fmt.Printf("boolevel(%s) = %t\n", s, operation.BoolEval(s))
+	fmt.Printf("booleval(%s) = %t\n", s, operation.BoolEval(s))
 	s = "10="
-	fmt.Printf("boolevel(%s) = %t\n", s, operation.BoolEval(s))
+	fmt.Printf("booleval(%s) = %t\n", s, operation.BoolEval(s))
 	s = "1011||="
-	fmt.Printf("boolevel(%s) = %t\n", s, operation.BoolEval(s))
+	fmt.Printf("booleval(%s) = %t\n", s, operation.BoolEval(s))
+	s = "ABCD||="
+	fmt.Printf("truthtable(%s) =\n", s)
+	operation.TruthTable(s)
 }
