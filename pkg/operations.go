@@ -23,9 +23,12 @@ func Substract(a int32, b int32) int32 {
 
 func Multiply(a int32, b int32) int32 {
 	var res int32 = 0
-	for (b != 0) {
-		b = Add(b, -1)
-		res = Add(res, a)
+	for i := 0; i < 32; i++ {
+		if (b & 1) != 0 {
+			res = Add(res, a)
+		}
+		a = a << 1
+		b = b >> 1
 	}
 	return res
 }
@@ -36,6 +39,7 @@ func GrayCode(a int32) int32 {
 
 func BoolEval(s string) bool {
 	if len(s) == 0 {
+		fmt.Println("Provided string is empty")
 		return false
 	}
 	stack := make([]bool, 0)
@@ -113,21 +117,18 @@ func TruthTable(s string) {
 	if len(s) == 0 {
 		return
 	}
-	str := ""
 	for _, c := range s {
 		if (!(c >= 'A' && c <= 'Z') && (c != '!') && (c != '&') && (c != '|') && (c != '^') && (c != '>') && (c != '=')) {
 			fmt.Println("Invalid character: ", string(c))
 			return
-		} else {
-			str += string(c)
 		}
 	}
 	letters := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	charset := ""
-	for i := 0; i < len(str); i++ {
+	for i := 0; i < len(s); i++ {
 		for j := 0; j < len(letters); j++ {
-			if str[i] == letters[j] {
-				charset += string(str[i])
+			if s[i] == letters[j] {
+				charset += string(s[i])
 				break
 			}
 		}
@@ -146,7 +147,7 @@ func TruthTable(s string) {
 		for len(conv) < len(charset) {
 			conv = conv + "0"
 		}
-		buf := str
+		buf := s
 		for j := 0; j < len(charset); j++ {
 			buf = strings.ReplaceAll(buf, string(charset[j]), string(conv[j]))
 		}
@@ -154,5 +155,18 @@ func TruthTable(s string) {
 			fmt.Print("| " + string(buf[i]) + " ")
 		}
 		fmt.Printf("|%-5t|\n", BoolEval(buf))
+	}
+}
+
+func NegationNormalForm(s string) string {
+	if len(s) == 0 {
+			fmt.Println("Provided string is empty")
+			return ""
+	}
+	for _, c := range s {
+		if (!(c >= 'A' && c <= 'Z') && (c != '!') && (c != '&') && (c != '|') && (c != '^') && (c != '>') && (c != '=')) {
+			fmt.Println("Invalid character: ", string(c))
+			return ""
+		}
 	}
 }
